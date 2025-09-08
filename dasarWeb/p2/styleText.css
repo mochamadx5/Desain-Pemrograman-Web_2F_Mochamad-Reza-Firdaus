@@ -1,3 +1,10 @@
 .tulisan_warna {
     color: blue;
 }
+
+body {
+    text-align: center;
+}
+.par1 {
+    text-decoration: underline;
+}
