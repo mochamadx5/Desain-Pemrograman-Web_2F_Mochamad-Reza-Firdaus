@@ -5,19 +5,19 @@
     padding: 20px;
     box-sizing: border-box;
     display: flex;
-    gap: 20px; /* jarak antar kolom */
+    gap: 20px; 
 }
 
 .sidebar-satu {
-    flex: 1; /* sidebar kiri */
+    flex: 1; 
 }
 
 .kolom-utama {
-    flex: 2; /* konten utama lebih lebar */
+    flex: 2; 
 }
 
 .sidebar-dua {
-    flex: 1; /* sidebar kanan */
+    flex: 1; 
 }
 body{
     background-color: #b0b0b0 ;
