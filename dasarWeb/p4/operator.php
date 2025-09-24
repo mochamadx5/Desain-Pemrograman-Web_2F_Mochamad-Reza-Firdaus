@@ -99,5 +99,15 @@ $a %= $b;
 echo "Setelah a %= b: ";
 var_dump($a);
 echo "<br>";
-// 
+
+$hasilIdentik = $a === $b;
+$hasilTidakIdentik = $a !== $b;
+
+echo "Hasil identik ";
+var_dump($hasilIdentik);
+echo "<br>";
+
+echo "Hasil tidak identik ";
+var_dump($hasilTidakIdentik);
+echo "<br>";
 ?>
