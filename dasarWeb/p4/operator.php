@@ -47,4 +47,56 @@ echo "Apakah a lebih besar atau sama dengan b? ";
 var_dump($hasilLebihBesarSama);
 echo "<br>";
 
+$hasilAnd = $a && $b;
+$hasilOr = $a || $b;
+$hasilNotA = !$a;
+$hasilNotB = !$b;
+
+echo "Hasil AND: ";
+var_dump($hasilAnd);
+echo "<br>";
+
+echo "Hasil OR: ";
+var_dump($hasilOr);
+echo "<br>";
+
+echo "Hasil NOT A: ";
+var_dump($hasilNotA);
+echo "<br>";
+
+echo "Hasil NOT B: ";
+var_dump($hasilNotB);
+echo "<br>";
+
+
+$a += $b;
+$a -= $b;
+$a *= $b;
+$a /= $b;
+$a %= $b;
+
+$a += $b;
+echo "Setelah a += b: ";
+var_dump($a);
+echo "<br>";
+
+$a -= $b;
+echo "Setelah a -= b: ";
+var_dump($a);
+echo "<br>";
+
+$a *= $b;
+echo "Setelah a *= b: ";
+var_dump($a);
+echo "<br>";
+
+$a /= $b;
+echo "Setelah a /= b: ";
+var_dump($a);
+echo "<br>";
+
+$a %= $b;
+echo "Setelah a %= b: ";
+var_dump($a);
+echo "<br>";
 ?>
