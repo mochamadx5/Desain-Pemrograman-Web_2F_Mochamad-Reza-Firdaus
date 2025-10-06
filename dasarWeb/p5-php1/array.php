@@ -5,7 +5,7 @@ $menu = [
         "nama" => "Berita",
         "subMenu" => [
             [
-                "nama" => "Wisata",
+                "Nama" => "Wisata",
                 "subMenu" => [
                     [ "nama" => "Pantai" ],
                     [ "nama" => "Gunung" ]
