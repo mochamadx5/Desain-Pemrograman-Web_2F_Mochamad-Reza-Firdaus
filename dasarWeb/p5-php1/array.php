@@ -1,37 +1,25 @@
-<?php
-$menu = [
-    [ "nama" => "Beranda" ],
-    [ 
-        "nama" => "Berita",
-        "subMenu" => [
-            [
-                "Nama" => "Wisata",
-                "subMenu" => [
-                    [ "nama" => "Pantai" ],
-                    [ "nama" => "Gunung" ]
-                ]
-            ],
-            [ "nama" => "Kuliner" ],
-            [ "nama" => "Hiburan" ]
-        ]
-    ],
-    [ "nama" => "Tentang" ],
-    [ "nama" => "Kontak" ]
-];
-
-function tampilkanMenuBertingkat(array $menu) {
-    echo "<ul>";
-    foreach ($menu as $item) {
-        echo "<li>{$item['nama']}";
-        // cek apakah ada subMenu
-        if (isset($item['subMenu'])) {
-            tampilkanMenuBertingkat($item['subMenu']); // panggil rekursif
-        }
-        echo "</li>";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        color: blue;
+        font-family : "consolas";
     }
-    echo "</ul>";
-}
-
-// memanggil fungsi utama
-tampilkanMenuBertingkat($menu);
-?>
+</style>
+<body>
+    <?php
+    $Dosen = [
+        'nama' => 'elok nur hamdana',
+        'domisili' => 'Malang',
+        'jenis kelamin' => 'Perempuan'];
+    echo "Nama :  {$Dosen ['nama']} <br>";
+    echo "Domisili : {$Dosen ['domisili']} <br>";
+    echo "Jenis kelamin : {$Dosen ['jenis kelamin']} <br>";
+    ?>
+</body>
+</html>
