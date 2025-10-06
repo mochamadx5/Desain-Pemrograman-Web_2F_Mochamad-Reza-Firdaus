@@ -10,7 +10,7 @@ function perkenalan ($nama, $salam = "Assalamualaikum") {
 
     // memanggil fungsi lain
     echo " Saya berusia ". hitungUmur(1988, 2023) ." tahun<br/>";
-    echo "Senang berkenalan dengan anda <br/>";
+    echo " Senang berkenalan dengan anda <br/>";
 }
     // memanggil fungsi perkenalan
     perkenalan(" Elok");
