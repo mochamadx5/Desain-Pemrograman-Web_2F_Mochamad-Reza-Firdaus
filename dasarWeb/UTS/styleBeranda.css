@@ -21,7 +21,6 @@ body {
   align-items: center;
   padding: 16px 40px;
   border-bottom: 4px solid #003B75;
-  /* width: 100vh; */
   gap: 16px;
 }
 
@@ -63,10 +62,9 @@ body {
   background: #cc2e2e;
 }
 
-/* ===== Profil Mahasiswa ===== */
+/* Profil Mahasiswa */
 .profil-mhs {
   background: #eaf3ff;
-  /* border-bottom: 2px solid #004E98; */
   display: flex;
   justify-content:center;
   align-items:flex-start;
@@ -89,7 +87,7 @@ body {
   color: #333;
   font-weight: 500;
 }
-/* ===== Main Content ===== */
+/* Main Content */
 .main-content {
   flex: 1;
   display: flex;
@@ -111,9 +109,9 @@ body {
   margin-bottom: 24px;
 }
 
-/* ===== Info Grid ===== */
+/* Info Grid */
 .info-grid {
-  display: flex;
+  display:flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 36px;
@@ -161,7 +159,7 @@ body {
   background: #003B75;
 }
 
-/* ===== Footer ===== */
+/* Footer */
 .footer {
   background: #004E98;
   color: white;
