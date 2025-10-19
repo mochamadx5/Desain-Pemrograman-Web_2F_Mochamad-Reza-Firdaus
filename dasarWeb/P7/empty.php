@@ -5,3 +5,8 @@ if (empty($myArray)) {
 } else {
     echo "array terdefinisi dan tidak kosong";
 }
+if (empty($nonExistentVar)) {
+    echo "<br> Array tidak terdefinisi atau kosong.";
+} else {
+    echo "array terdefinisi dan tidak kosong";
+}
