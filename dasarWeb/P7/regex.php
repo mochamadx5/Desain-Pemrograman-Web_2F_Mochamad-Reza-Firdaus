@@ -14,3 +14,19 @@ if (preg_match($pattern, $text, $matches)) {
 } else {
     echo "Tidak ada yang cocok!";
 }
+$pattern = '/apple/';
+$replacement = 'banana';
+$text = '<br> <br> I like apple pie.';
+
+$new_text = preg_replace($pattern, $replacement, $text);
+
+echo $new_text; // Output: "I like banana pie."
+
+$pattern = '/go?d/'; // Cocokkan "gd", "god", "good", "goood", dll.
+$text = 'god is good.';
+
+if (preg_match($pattern, $text, $matches)) {
+    echo "<br> <br> Cocokkan: " . $matches[0];
+} else {
+    echo "Tidak ada yang cocok!";
+}
