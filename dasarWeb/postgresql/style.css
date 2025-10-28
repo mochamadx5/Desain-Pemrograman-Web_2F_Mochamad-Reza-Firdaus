@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: hsl(214, 37%, 63%);
+  color: #333;
+  margin: 0;
+  padding: 40px;
+}
+
+h1 {
+  text-align: center;
+  color: #004E98;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th {
+  background-color: #004E98;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+}
+
+td {
+  padding: 10px 14px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 15px;
+}
+
+tr:hover {
+  background-color: #f0f8ff;
+}
+
+a {
+  text-decoration: none;
+  color: #004E98;
+  font-weight: 500;
+  margin: 0 6px;
+  transition: 0.2s;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #0077ff;
+}
+
+a.hapus {
+  color: #d9534f;
+}
+
+.aksi {
+  display: flex;
+  justify-content: center;
+}
+
+.back-btn {
+  display: block;
+  width: fit-content;
+  margin: 30px auto 0;
+  background: #004E98;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: #003b75;
+}
