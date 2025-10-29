@@ -8,6 +8,9 @@ if (!file_exists($targetDirectory)) {
 }
 if ($_FILES['files']['name'][0]) {
     $totalFiles = count($_FILES['files']['name']);
+    $allowedTypes = ['image/jpeg', 'image/png', 'image/gif']; // hanya gambar
+    $maxSize = 5 * 1024 * 1024; // 5 MB
+
 
     // loop semua file yang diunngah
     for ($i=0; $i < $totalFiles ; $i++) { 
