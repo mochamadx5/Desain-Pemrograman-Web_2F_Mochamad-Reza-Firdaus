@@ -1,17 +1,23 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+  header("Location: loginPage.php");
+  exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beranda | SIAKAD Polinema</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styleBeranda.css">
 </head>
 <body>
   <div class="container">
     <header class="navbar">
-      <a href="beranda.html">
-        <img src="https://api.builder.io/api/v1/image/assets/TEMP/644a6ff082efbd2b3f04624e614fed08c4c55d64?width=140" alt="Logo Polinema" class="logo">
+      <a href="beranda.php">
+        <img src="https://api.builder.io/api/v1/image/assets/TEMP/644a6ff082efbd2b3f04624e614fed08c4c55d64?width=140" class="logo">
       </a>
       <nav class="nav-menu">
         <a href="#" class="menu-item active">Beranda</a>
@@ -19,20 +25,20 @@
         <a href="#" class="menu-item">General</a>
         <a href="#" class="menu-item">Akademik</a>
         <a href="#" class="menu-item">UKT</a>
-        <a href="#" class="menu-item">Surat & Kuiosoner</a>
+        <a href="#" class="menu-item">Surat & Kuisioner</a>
         <a href="#" class="menu-item">Tingkat Akhir</a>
-        <a href="../postgresql/index.php" class="menu-item">Profil Mahasiswa</a>
+        <a href="../CRUD/index.php" class="menu-item">Profil Mahasiswa</a>
       </nav>
-      <a href="loginPage.html">
-        <button class="logout-btn">Logout</button>
-      </a>
+      <a href="loginPage.php"><button class="logout-btn">Logout</button></a>
     </header>
+
     <main class="profil-mhs">
       <div class="profil-box">
-        <h3 class="profil-nama">244107020104 / Mochamad Reza Firdaus</h3>
+        <h3 class="profil-nama"><?= $_SESSION['username']; ?> / <?= $_SESSION['nama']; ?></h3>
         <p class="profil-jurusan">D-IV Teknik Informatika</p>
       </div>
     </main>
+
     <main class="main-content">
       <section class="welcome-section">
         <h1>Selamat Datang di SIAKAD Politeknik Negeri Malang</h1>
@@ -54,7 +60,8 @@
           <h3>LMS</h3>
           <p>Learning Management System.</p>
           <button class="btn-primary">LMS</button>
-        </section>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">

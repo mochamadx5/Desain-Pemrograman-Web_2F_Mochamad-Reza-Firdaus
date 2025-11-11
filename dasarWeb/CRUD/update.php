@@ -2,7 +2,7 @@
 include 'koneksi.php';
 
 $nim = $_GET['nim'];
-$query = pg_query($conn, "SELECT * FROM \"TB_mahasiswa\" WHERE \"NIM\" = '$nim'");
+$query = pg_query($conn, "SELECT * FROM \"TB_Mahasiswa\" WHERE \"Nim\" = '$nim'");
 $data = pg_fetch_assoc($query);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -10,9 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = $_POST['email'];
   $jurusan = $_POST['jurusan'];
 
-  $sql = "UPDATE \"TB_mahasiswa\" 
-          SET \"Nama\"='$nama', \"Email\"='$email', \"Jurusan\"='$jurusan'
-          WHERE \"NIM\"='$nim'";
+  $sql = "UPDATE \"TB_Mahasiswa\" 
+          SET \"Nama\" = '$nama', \"Email\" = '$email', \"Jurusan\" = '$jurusan'
+          WHERE \"Nim\" = '$nim'";
   $result = pg_query($conn, $sql);
 
   if ($result) {
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <h1>Edit Data Mahasiswa</h1>
   <form method="POST">
     <label>NIM (tidak bisa diubah)</label>
-    <input type="text" value="<?= htmlspecialchars($data['NIM']); ?>" readonly>
+    <input type="text" value="<?= htmlspecialchars($data['Nim']); ?>" readonly>
     <label>Nama</label>
     <input type="text" name="nama" value="<?= htmlspecialchars($data['Nama']); ?>" required>
     <label>Email</label>
@@ -46,3 +46,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <a href="index.php" class="back-btn">← Kembali</a>
 </body>
 </html>
+<?php pg_close($conn); ?>

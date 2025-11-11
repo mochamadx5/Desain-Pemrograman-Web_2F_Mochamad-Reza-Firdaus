@@ -12,7 +12,7 @@ document.getElementById('loginBtn').addEventListener('click', function() {
   const password = document.getElementById('password').value.trim();
 
   if (username === '244107020104' && password === 'TI-2F') {
-    window.location.href = 'beranda.html';
+    window.location.href = 'beranda.php';
   } else {
     alert('Username dan Password tidak ditemukan');
     return; 

@@ -1,7 +1,7 @@
 <?php
 include 'koneksi.php';
 $nim = $_GET['nim'];
-$sql = "DELETE FROM \"TB_mahasiswa\" WHERE \"NIM\" = '$nim'";
+$sql = "DELETE FROM \"TB_Mahasiswa\" WHERE \"Nim\" = '$nim'";
 $result = pg_query($conn, $sql);
 
 if ($result) {
