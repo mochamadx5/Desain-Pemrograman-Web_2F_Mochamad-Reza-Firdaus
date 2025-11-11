@@ -14,7 +14,7 @@ document.getElementById('loginBtn').addEventListener('click', function() {
   if (username === '244107020104' && password === 'TI-2F') {
     window.location.href = 'beranda.html';
   } else {
-    alert('Username dan password tidak ditemukan');
+    alert('Username dan Password tidak ditemukan');
     return; 
   }
 });
