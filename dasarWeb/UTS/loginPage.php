@@ -8,26 +8,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $username = trim($_POST['username']);
   $password = trim($_POST['password']);
 
-  // validasi input kosong
   if ($username === '' || $password === '') {
     $error = "Username dan Password wajib diisi!";
   } else {
-    // cek user di database
     $query = 'SELECT * FROM "TB_user" WHERE "username" = $1 LIMIT 1;';
     $result = pg_query_params($conn, $query, [$username]);
 
     if ($result && pg_num_rows($result) > 0) {
       $user = pg_fetch_assoc($result);
 
-      // verifikasi password hash (kalau disimpan hashed)
-      if (password_verify($password, $user['password'])) {
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['nama'] = $user['nama'];
-        header('Location: beranda.php');
-        exit;
-      }
-      // kalau password disimpan polos (plain text)
-      elseif ($password === $user['password']) {
+      // password bisa hash atau plain
+      if (password_verify($password, $user['password']) || $password === $user['password']) {
         $_SESSION['username'] = $user['username'];
         $_SESSION['nama'] = $user['nama'];
         header('Location: beranda.php');
@@ -44,62 +35,95 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SIAKAD | Politeknik Negeri Malang</title>
-  <link rel="stylesheet" href="loginPage.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login | SIAKAD Polinema</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #004E98, #007BFF);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .logo {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+    .title {
+      font-weight: 600;
+      color: #004E98;
+    }
+    .btn-primary {
+      background-color: #004E98;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #003b75;
+    }
+    .footer-text {
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
 </head>
 <body>
-  <div class="login-page">
-    <h1 class="title">SIAKAD | Politeknik Negeri Malang</h1>
-
-    <div class="login-container">
-      <div class="left-content">
-        <div class="logo-section">
-          <img src="https://api.builder.io/api/v1/image/assets/TEMP/644a6ff082efbd2b3f04624e614fed08c4c55d64?width=140"
-               alt="Logo Polinema" class="logo">
-        </div>
-
-        <form class="login-form" method="POST" action="">
-          <h2>Login Mahasiswa</h2>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-7 col-sm-9">
+        <div class="card p-4 bg-white">
+          <div class="text-center">
+            <img src="https://api.builder.io/api/v1/image/assets/TEMP/644a6ff082efbd2b3f04624e614fed08c4c55d64?width=140"
+                 alt="Logo Polinema" class="logo">
+            <h4 class="title mb-4">SIAKAD Politeknik Negeri Malang</h4>
+          </div>
 
           <?php if (!empty($error)): ?>
-            <p style="color:red; text-align:center;"><?= htmlspecialchars($error); ?></p>
+            <div class="alert alert-danger text-center py-2"><?= htmlspecialchars($error); ?></div>
           <?php endif; ?>
 
-          <div class="form-group">
-            <label for="username">Username - NIM</label>
-            <input type="text" id="username" name="username" placeholder="Masukkan username" required>
-          </div>
+          <form method="POST" action="">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username / NIM</label>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username" required>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Kata Sandi</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan kata sandi" required>
+            </div>
 
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Masukkan kata sandi" required>
-          </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="showPassword">
+              <label class="form-check-label" for="showPassword">Tampilkan Password</label>
+            </div>
 
-          <div class="show-password">
-            <input type="checkbox" id="showPassword">
-            <label for="showPassword">Tampilkan Password</label>
-          </div>
+            <div class="d-grid mb-3">
+              <button type="submit" class="btn btn-primary">LOGIN</button>
+            </div>
 
-          <div class="login-footer">
-            <button type="submit" class="btn-login">LOGIN</button>
-            <a href="pemulihanPassword.php" class="forgot-password">Lupa password?</a>
-          </div>
-          <p class="footer-text">2025 © Sistem Informasi Akademik - 3</p>
-        </form>
-      </div>
+            <div class="text-center">
+              <a href="pemulihanPassword.php" class="text-decoration-none">Lupa password?</a>
+            </div>
+          </form>
 
-      <div class="right-content">
-        <img src="https://api.builder.io/api/v1/image/assets/TEMP/52a8f7f0e127a4d17c388876c1b078216e4abde2?width=1346"
-             alt="Gedung Polinema" class="building">
+          <p class="text-center mt-4 footer-text">2025 © Sistem Informasi Akademik - 3</p>
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- Bootstrap JS + Password toggle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // tampilkan / sembunyikan password
     const togglePassword = document.querySelector('#showPassword');
     const passwordInput = document.querySelector('#password');
     togglePassword.addEventListener('change', function() {
